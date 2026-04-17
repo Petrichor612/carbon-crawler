@@ -20,15 +20,18 @@ public class PolicyController {
         this.policyService = policyService;
     }
 
-    // 首页（已修复空指针）
+    // 首页 - 不会报错
     @GetMapping("/")
-public String index() {
-    return "✅ 首页正常！  
-    可以访问的页面：  
-    1. /test → 测试接口  
-    2. /policy/list → 查看政策列表  
-    3. /policy/start → 开始爬数据";
-}
+    public String index() {
+        return "index";
+    }
+
+    // 测试接口
+    @GetMapping("/test")
+    @ResponseBody
+    public String test() {
+        return "Project is running successfully!";
+    }
 
     // 原有接口
     @GetMapping("/view")
@@ -47,11 +50,5 @@ public String index() {
         model.addAttribute("policy", policy);
         return "detail";
     }
-
-    @GetMapping("/test")
-@ResponseBody
-public String test() {
-    return "✅ 项目运行成功！接口正常！";
-}
     
 }
