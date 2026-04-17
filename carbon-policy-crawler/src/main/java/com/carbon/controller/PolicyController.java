@@ -21,21 +21,14 @@ public class PolicyController {
     }
 
     // 首页（已修复空指针）
-    // @GetMapping("/")
-    public String index(Model model,
-                        @RequestParam(value = "keyword", required = false) String keyword,
-                        @RequestParam(value = "type", required = false, defaultValue = "policy") String type) {
-
-        // 🔥 核心修复：确保永远不会返回 null
-        List<Policy> policyList = policyService.getPolicyList(keyword, type);
-        if (policyList == null) {
-            policyList = List.of(); // 空列表，不会空指针
-        }
-
-        model.addAttribute("policyList", policyList);
-        model.addAttribute("keyword", keyword);
-        return "index";
-    }
+    @GetMapping("/")
+public String index() {
+    return "✅ 首页正常！  
+    可以访问的页面：  
+    1. /test → 测试接口  
+    2. /policy/list → 查看政策列表  
+    3. /policy/start → 开始爬数据";
+}
 
     // 原有接口
     @GetMapping("/view")
@@ -54,4 +47,11 @@ public class PolicyController {
         model.addAttribute("policy", policy);
         return "detail";
     }
+
+    @GetMapping("/test")
+@ResponseBody
+public String test() {
+    return "✅ 项目运行成功！接口正常！";
+}
+    
 }
