@@ -3,14 +3,16 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
-    username: ${PGUSER}
-    password: ${PGPASSWORD}
+    # 我直接帮你填好了真实地址！
+    url: jdbc:postgresql://monorail.proxy.rlwy.net:53369/railway
+    username: postgres
+    password: 1ByxCYQXcPDCLxNvoBvYjLJxNQVvZaLf
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: update
-    show-sql: true
+      ddl-auto: none  # 必须关闭，避免表冲突
+    show-sql: false
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
