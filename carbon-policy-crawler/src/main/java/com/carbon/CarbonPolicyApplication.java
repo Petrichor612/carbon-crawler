@@ -7,15 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-public class CarbonPolicyCrawlerApplication {
+public class CarbonPolicyApplication {
 
-    // 直接把首页写在启动类里！100% 被加载！
     @GetMapping("/")
     public String home() {
-        return "✅ 项目启动成功！公网运行正常！";
+        return "✅ 项目部署成功！运行正常！";
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(CarbonPolicyCrawlerApplication.class, args);
+        SpringApplication.run(CarbonPolicyApplication.class, args);
     }
 }
