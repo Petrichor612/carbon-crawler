@@ -21,7 +21,7 @@ public class PolicyController {
     }
 
     // 首页（已修复空指针）
-    @GetMapping("/")
+    // @GetMapping("/")
     public String index(Model model,
                         @RequestParam(value = "keyword", required = false) String keyword,
                         @RequestParam(value = "type", required = false, defaultValue = "policy") String type) {
