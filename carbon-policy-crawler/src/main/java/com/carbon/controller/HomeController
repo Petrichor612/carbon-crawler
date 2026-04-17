@@ -1,0 +1,13 @@
+package com.carbon.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HomeController {
+
+    @GetMapping("/")
+    public String index() {
+        return "✅ 项目部署成功！公网地址：bubbly-enchantment-production-564d.up.railway.app";
+    }
+}
