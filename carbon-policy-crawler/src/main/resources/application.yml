@@ -1,17 +1,9 @@
 server:
   port: 8080
 
+# 完全禁用数据库自动配置
 spring:
-  datasource:
-    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
-    username: ${PGUSER}
-    password: ${PGPASSWORD}
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: none  # 改成 none，禁用自动建表
-    show-sql: false
-
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.carbon.entity
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
