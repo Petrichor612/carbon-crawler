@@ -1,4 +1,4 @@
-package com.carbon.controller;
+/*package com.carbon.controller;
 
 import com.carbon.entity.Policy;
 import com.carbon.service.PolicyService;
@@ -54,4 +54,4 @@ public class PolicyController {
         model.addAttribute("policy", policy);
         return "detail";
     }
-}
+}*/
