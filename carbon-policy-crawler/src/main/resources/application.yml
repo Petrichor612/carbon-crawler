@@ -5,9 +5,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}?sslmode=require
-    username: ${PGUSER}
-    password: ${PGPASSWORD}
+    url: jdbc:postgresql://nozomi.proxy.rlwy.net:50722/railway?sslmode=require
+    username: postgres
+    password: BLkhzQvtqbqYiqKzGOcTVfeRdxUFeHcC
     driver-class-name: org.postgresql.Driver
   thymeleaf:
     cache: false
