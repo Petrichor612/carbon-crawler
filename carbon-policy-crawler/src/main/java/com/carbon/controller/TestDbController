@@ -1,68 +1,46 @@
 package com.carbon.controller;
 
-import com.carbon.entity.Policy;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.util.List;
 
 @RestController
 public class TestDbController {
 
+    private final JdbcTemplate jdbcTemplate;
+
+    public TestDbController(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    // 测试服务是否存活
+    @GetMapping("/")
+    public String home() {
+        return "✅ 项目运行正常！";
+    }
+
     // 测试数据库连接
     @GetMapping("/test-db")
-    public String testDbConnection() {
+    public String testDb() {
         try {
-            // 尝试获取数据库连接
-            Connection conn = DriverManager.getConnection(
-                "jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}",
-                "${PGUSER}",
-                "${PGPASSWORD}"
-            );
-            return "✅ 数据库连接成功！服务正常！";
+            jdbcTemplate.queryForObject("SELECT 1", Integer.class);
+            return "✅ 数据库连接成功！";
         } catch (Exception e) {
-            return "❌ 数据库连接失败：" + e.getMessage();
+            return "❌ 数据库失败：" + e.getMessage();
         }
     }
 
-    // 测试查询 policy 表
-    @Autowired
-    private EntityManager entityManager;
-
+    // 测试 policy 表是否存在
     @GetMapping("/test-table")
     public String testTable() {
         try {
-            List<Policy> list = entityManager
-                .createQuery("from Policy", Policy.class)
-                .setMaxResults(10)
-                .getResultList();
-
-            return "✅ policy 表查询成功！当前表中数据量：" + list.size();
+            jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM policy",
+                Integer.class
+            );
+            return "✅ policy 表存在，查询正常！";
         } catch (Exception e) {
-            return "❌ policy 表不存在或查询失败：" + e.getMessage();
-        }
-    }
-
-    // 测试插入一条数据（最关键！）
-    @Transactional
-    @GetMapping("/test-insert")
-    public String testInsert() {
-        try {
-            Policy policy = new Policy();
-            policy.setTitle("测试政策标题");
-            policy.setContent("测试内容");
-            policy.setDepartment("测试部门");
-            policy.setCategory("测试分类");
-
-            entityManager.persist(policy);
-            return "✅ 数据插入成功！数据库完全正常！";
-        } catch (Exception e) {
-            return "❌ 插入失败：" + e.getMessage();
+            return "❌ 表不存在：" + e.getMessage();
         }
     }
 }
