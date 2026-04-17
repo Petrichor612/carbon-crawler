@@ -5,9 +5,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/carbon_policy_db
-    username: postgres
-    password: root123
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}?sslmode=require
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
     driver-class-name: org.postgresql.Driver
   thymeleaf:
     cache: false
@@ -17,6 +17,3 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.carbon.entity
-
-crawler:
-  cron: "0 0/1 * * * ?"
