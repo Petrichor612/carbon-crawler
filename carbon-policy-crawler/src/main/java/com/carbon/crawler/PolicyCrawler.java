@@ -45,7 +45,7 @@ public class PolicyCrawler {
     }
 
     // 每 10 分钟爬一次（自动翻页，不会重复）
-    // @Scheduled(cron = "0 0/5 * * * ?")
+    @Scheduled(cron = "0 0/5 * * * ?")
     public void run() {
         System.out.println("==================== 多网站 + 自动翻页爬虫启动 ====================");
 
