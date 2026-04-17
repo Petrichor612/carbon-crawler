@@ -1,22 +1,20 @@
 server:
   port: 8080
-  servlet:
-    context-path: /
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/carbon_policy_db
-    username: postgres
-    password: root123
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
-  thymeleaf:
-    cache: false
-    prefix: classpath:/templates/
-    suffix: .html
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.carbon.entity
-
-crawler:
-  cron: "0 0/1 * * * ?"
