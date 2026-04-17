@@ -1,20 +1,20 @@
-package com.carbon.controller;
+//package com.carbon.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class TestDbController {
+//@RestController
+//public class TestDbController {
 
     // 根接口
-    @GetMapping("/")
-    public String home() {
-        return "✅ 项目启动成功！！！不再 500 了！";
-    }
+//    @GetMapping("/")
+//    public String home() {
+//        return "✅ 项目启动成功！！！不再 500 了！";
+//    }
 
     // 测试接口
-    @GetMapping("/test")
-    public String test() {
-        return "✅ 接口正常访问！";
-    }
-}
+//    @GetMapping("/test")
+//    public String test() {
+//        return "✅ 接口正常访问！";
+//    }
+//}
