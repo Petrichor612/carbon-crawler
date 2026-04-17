@@ -20,17 +20,21 @@ public class PolicyController {
         this.policyService = policyService;
     }
 
-    // 首页 - 不会报错
+    // 首页（已修复空指针）
     @GetMapping("/")
-    public String index() {
-        return "index";
-    }
+    public String index(Model model,
+                        @RequestParam(value = "keyword", required = false) String keyword,
+                        @RequestParam(value = "type", required = false, defaultValue = "policy") String type) {
 
-    // 测试接口
-    @GetMapping("/test")
-    @ResponseBody
-    public String test() {
-        return "Project is running successfully!";
+        // 🔥 核心修复：确保永远不会返回 null
+        List<Policy> policyList = policyService.getPolicyList(keyword, type);
+        if (policyList == null) {
+            policyList = List.of(); // 空列表，不会空指针
+        }
+
+        model.addAttribute("policyList", policyList);
+        model.addAttribute("keyword", keyword);
+        return "index";
     }
 
     // 原有接口
@@ -50,5 +54,4 @@ public class PolicyController {
         model.addAttribute("policy", policy);
         return "detail";
     }
-    
 }
