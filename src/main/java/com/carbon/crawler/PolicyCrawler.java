@@ -489,7 +489,7 @@ public class PolicyCrawler {
     public void crawlNewEnergy() {
        /* SslUtils.ignoreSsl(); // 忽略证书*/
         String baseUrl = "https://www.newenergy.org.cn/zhdt/";
-        int maxPage = 3;
+        int maxPage = 10;
 
         for (int i = 0; i < maxPage; i++) {
             String url = (i == 0) ? baseUrl + "index.html" : baseUrl + "index_" + i + ".html";
@@ -549,7 +549,7 @@ public class PolicyCrawler {
 
         String baseUrl = "https://search.ccgp.gov.cn/bxsearch";
         String param = "?searchtype=1&bidSort=0&buyerName=&projectId=&pinMu=0&bidType=0&dbselect=bidx&kw=&start_time=2025%3A10%3A15&end_time=2026%3A04%3A15&timeType=5&displayZone=&zoneId=&pppStatus=0&agentName=";
-        int maxPage = 3;
+        int maxPage = 50;
 
         for (int page = 1; page <= maxPage; page++) {
             String url = baseUrl + param + "&page_index=" + page;
