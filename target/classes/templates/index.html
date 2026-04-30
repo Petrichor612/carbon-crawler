@@ -523,7 +523,8 @@
                            th:text="${policy.title}"
                            class="text-blue-600 hover:text-blue-800 transition-colors font-medium text-base block">政策标题</a>
                         <!-- 政策来源 -->
-                        <!--<p class="mt-1 text-xs text-gray-500" th:text="${policy.source}">来源</p>-->
+                        <p class="mt-1 text-xs text-gray-500"
+                           th:text="${#strings.length(policy.content) > 15 ? #strings.substring(policy.content, 0, 30) + '...' : policy.content}">正文</p>
                     </td>
                     <td class="px-6 py-4 text-gray-600 text-sm" th:text="${policy.source}">发布单位</td>
                     <td class="px-6 py-4 text-gray-600 text-sm text-right" th:text="${policy.publishTime}">2026-04-11</td>

@@ -19,3 +19,6 @@ mybatis:
   type-aliases-package: com.carbon.entity
   configuration:
     map-underscore-to-camel-case: true
+wdm:
+  # 使用清华大学的镜像源，下载速度飞快
+  mirror: https://npmmirror.com/mirrors/chromedriver
