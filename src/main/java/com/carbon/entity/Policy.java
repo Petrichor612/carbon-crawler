@@ -7,12 +7,17 @@ package com.carbon.entity;
  * @updateTime $ 11:54$ $
  * @throws $
  */
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
+@TableName("policy")
 public class Policy {
+    @TableId(type = IdType.AUTO)
     private Integer id;
     private String title;
     private String source;

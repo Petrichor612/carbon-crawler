@@ -10,9 +10,6 @@
         <module name="carbon-policy-crawler" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="carbon-policy-crawler" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

@@ -5,9 +5,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://nozomi.proxy.rlwy.net:50722/railway?sslmode=require
+    url: jdbc:postgresql://localhost:5432/carbon_policy_db
     username: postgres
-    password: BLkhzQvtqbqYiqKzGOcTVfeRdxUFeHcC
+    password: root123
     driver-class-name: org.postgresql.Driver
   thymeleaf:
     cache: false

@@ -7,16 +7,16 @@ package com.carbon.service.impl;
  * @updateTime $ 11:56$ $
  * @throws $
  */
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.carbon.entity.Policy;
 import com.carbon.mapper.PolicyMapper;
 import com.carbon.service.PolicyService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -66,6 +66,15 @@ public class PolicyServiceImpl implements PolicyService {
         // 调用 mapper 方法
         return policyMapper.selectPolicyPage(page);
     }
-    
+    @Override
+    public IPage<Policy> listByPage(int pageNum, int pageSize, String keyword) {
+        Page<Policy> page = new Page<>(pageNum, pageSize);
+        QueryWrapper<Policy> wrapper = new QueryWrapper<>();
+        if (StringUtils.hasText(keyword)) {
+            wrapper.like("title", keyword).or().like("content", keyword);
+        }
+        return policyMapper.selectPage(page, wrapper);
+    }
+
 
 }

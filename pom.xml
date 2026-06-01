@@ -67,7 +67,38 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.6.2</version> <!-- 请检查官网是否有更新版本 -->
         </dependency>
+        <!-- WebDriverManager: 自动下载 Edge 驱动 (可选，但推荐) -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20231013</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
+
+    <!-- 3. 配置阿里云镜像 (解决下载慢的问题) -->
+    <repositories>
+        <repository>
+            <id>aliyun</id>
+            <name>Aliyun Maven</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
